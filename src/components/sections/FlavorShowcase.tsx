@@ -73,9 +73,9 @@ export default function FlavorShowcase() {
 
               {/* Details */}
               <div className="p-5 sm:p-8 md:p-12">
-                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] opacity-40">{p.category}</span>
-                <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--bb-brown)] mt-2">{p.name}</h3>
-                <p className="mt-1 font-display font-semibold text-xs sm:text-sm" style={{ color: p.bg }}>{p.tagline}</p>
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] opacity-40" style={{ fontFamily: "var(--font-condensed)" }}>{p.category}</span>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--bb-brown)] mt-2 italic" style={{ fontFamily: "var(--font-serif)" }}>{p.name}</h3>
+                <p className="mt-1 font-semibold text-xs sm:text-sm" style={{ color: p.bg, fontFamily: "var(--font-condensed)" }}>{p.tagline}</p>
                 <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-[var(--bb-brown)]/50 leading-relaxed">{p.description}</p>
 
                 {/* Tags */}

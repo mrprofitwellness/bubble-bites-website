@@ -41,7 +41,7 @@ export default function ProductDisplay() {
                   )}
                 </motion.div>
               </div>
-              <h3 className="font-display text-xs sm:text-base md:text-lg font-bold text-white mb-0.5 sm:mb-1">{p.name}</h3>
+              <h3 className="text-xs sm:text-base md:text-lg font-bold text-white mb-0.5 sm:mb-1 italic" style={{ fontFamily: "var(--font-serif)" }}>{p.name}</h3>
               <p className="text-[10px] sm:text-sm text-white/40 hidden sm:block">{p.tagline}</p>
               <div className="mt-2 sm:mt-3 flex justify-center gap-1 sm:gap-2 flex-wrap">
                 {["Zero Sugar", p.weight].map((t) => (

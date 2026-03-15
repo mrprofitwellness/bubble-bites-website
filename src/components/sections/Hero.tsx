@@ -94,7 +94,7 @@ export default function Hero() {
               <motion.span
                 animate={{ color: p.heroAccent }}
                 transition={{ duration: 0.5 }}
-                className="font-display text-xs sm:text-sm font-bold tracking-wide"
+                className="font-display text-sm sm:text-base md:text-lg font-bold tracking-wide"
               >
                 Snack Smart
               </motion.span>
@@ -106,7 +106,7 @@ export default function Hero() {
               <motion.span
                 animate={{ color: p.heroAccent }}
                 transition={{ duration: 0.5 }}
-                className="font-display text-xs sm:text-sm font-bold tracking-wide"
+                className="font-display text-sm sm:text-base md:text-lg font-bold tracking-wide"
               >
                 Play Hard
               </motion.span>

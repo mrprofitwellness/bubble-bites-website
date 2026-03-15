@@ -27,6 +27,8 @@
   --color-foreground: var(--bb-brown);
   --font-sans: var(--font-nunito);
   --font-display: var(--font-fredoka);
+  --font-condensed: var(--font-barlow);
+  --font-serif: var(--font-playfair);
 }
 
 html { scroll-behavior: smooth; }

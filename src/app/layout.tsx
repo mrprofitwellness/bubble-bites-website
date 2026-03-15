@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Nunito, Fredoka } from "next/font/google";
+import { Nunito, Fredoka, Barlow_Condensed, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -11,6 +11,20 @@ const nunito = Nunito({
 const fredoka = Fredoka({
   variable: "--font-fredoka",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-barlow",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -205,7 +219,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
         />
       </head>
-      <body className={`${nunito.variable} ${fredoka.variable} antialiased`}>
+      <body className={`${nunito.variable} ${fredoka.variable} ${barlowCondensed.variable} ${playfair.variable} antialiased`}>
         {children}
       </body>
     </html>
