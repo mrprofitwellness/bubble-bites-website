@@ -23,6 +23,24 @@
 # misc
 .DS_Store
 *.pem
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# claude
+.claude/
 
 # debug
 npm-debug.log*
