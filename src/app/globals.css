@@ -56,7 +56,6 @@ h1, h2, h3, h4, h5, h6 {
 .anim-float { animation: float-y 4s ease-in-out infinite; }
 .anim-pulse { animation: scale-pulse 3s ease-in-out infinite; }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bb-cream); }
-::-webkit-scrollbar-thumb { background: var(--bb-teal); border-radius: 3px; }
+/* Hide scrollbar */
+::-webkit-scrollbar { display: none; }
+html { scrollbar-width: none; }

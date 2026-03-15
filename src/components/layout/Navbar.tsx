@@ -12,19 +12,25 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20);
+    const fn = () => {
+      // Show solid bg after scrolling just 50px
+      setPastHero(window.scrollY > 50);
+    };
     window.addEventListener("scroll", fn, { passive: true });
+    fn();
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-sm py-2 sm:py-3" : "bg-transparent py-3 sm:py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        pastHero
+          ? "py-2 sm:py-2.5 bg-[var(--bb-cream)] shadow-[0_1px_12px_rgba(74,44,26,0.08)]"
+          : "py-3 sm:py-5 bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-5 flex items-center justify-between">
@@ -34,20 +40,20 @@ export default function Navbar() {
             alt="Bubble Bites"
             width={200}
             height={120}
-            className={`h-auto transition-all duration-300 ${scrolled ? "w-24 sm:w-28" : "w-28 sm:w-36"}`}
+            className={`h-auto transition-all duration-300 ${pastHero ? "w-20 sm:w-24" : "w-28 sm:w-36"}`}
             priority
           />
         </a>
 
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+        <div className="hidden md:flex items-center gap-1 lg:gap-2">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className={`text-xs sm:text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
-                scrolled
-                  ? "text-[var(--bb-brown)]/50 hover:text-[var(--bb-brown)]"
-                  : "text-white/60 hover:text-white"
+              className={`px-3 lg:px-4 py-2 rounded-lg text-xs sm:text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
+                pastHero
+                  ? "text-[var(--bb-brown)]/60 hover:text-[var(--bb-brown)] hover:bg-[var(--bb-brown)]/5"
+                  : "text-white/60 hover:text-white hover:bg-white/10"
               }`}
             >
               {l.label}
@@ -57,14 +63,14 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5"
+          className="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 rounded-lg transition-colors"
           aria-label="Menu"
         >
-          <span className={`block w-5 h-[2px] transition-all duration-300 ${
-            scrolled ? "bg-[var(--bb-brown)]" : "bg-white"
+          <span className={`block w-5 h-[2px] rounded-full transition-all duration-300 ${
+            pastHero ? "bg-[var(--bb-brown)]" : "bg-white"
           } ${open ? "rotate-45 translate-y-[4px]" : ""}`} />
-          <span className={`block w-5 h-[2px] transition-all duration-300 ${
-            scrolled ? "bg-[var(--bb-brown)]" : "bg-white"
+          <span className={`block w-5 h-[2px] rounded-full transition-all duration-300 ${
+            pastHero ? "bg-[var(--bb-brown)]" : "bg-white"
           } ${open ? "-rotate-45 -translate-y-[4px]" : ""}`} />
         </button>
       </div>
@@ -75,15 +81,23 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-white overflow-hidden"
+            className={`md:hidden overflow-hidden border-t ${
+              pastHero
+                ? "bg-[var(--bb-cream)] border-[var(--bb-brown)]/5"
+                : "bg-[var(--bb-brown)]/90 backdrop-blur-xl border-white/10"
+            }`}
           >
-            <div className="px-4 py-4 flex flex-col gap-1">
+            <div className="px-4 py-3 flex flex-col gap-0.5">
               {links.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-base font-bold text-[var(--bb-brown)] py-3 px-2 rounded-lg hover:bg-gray-50"
+                  className={`text-base font-bold py-3 px-3 rounded-xl transition-colors ${
+                    pastHero
+                      ? "text-[var(--bb-brown)] hover:bg-[var(--bb-brown)]/5"
+                      : "text-white/80 hover:bg-white/10"
+                  }`}
                 >
                   {l.label}
                 </a>
